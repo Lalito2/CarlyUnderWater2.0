@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+:root {
+  --ocean-deep: #0B3D6E;
+  --ocean-teal: #0B7A8F;
+  --ocean-turquoise: #4EC7C3;
+  --ocean-mist: #BFE8E3;
+  --sand-warm: #F7F1E7;
+  --sand-foam: #FFFDF9;
+  --coral: #FF7A6E;
+  --coral-soft: #F4B6A6;
+  --sun-gold: #F6C44E;
+  --ink: #0B2540;
+}
+
+@theme inline {
+  --color-ocean-deep: #0B3D6E;
+  --color-ocean-teal: #0B7A8F;
+  --color-ocean-turquoise: #4EC7C3;
+  --color-ocean-mist: #BFE8E3;
+  --color-sand-warm: #F7F1E7;
+  --color-sand-foam: #FFFDF9;
+  --color-coral: #FF7A6E;
+  --color-coral-soft: #F4B6A6;
+  --color-sun-gold: #F6C44E;
+  --color-ink: #0B2540;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --font-script: "Pacifico", cursive;
+  --font-accent: "Caveat", cursive;
+}
+
+html {
+  background-color: var(--sand-warm);
+  color: var(--ink);
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: "Montserrat", system-ui, sans-serif;
+  background-color: var(--sand-warm);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-script {
+  font-family: "Pacifico", cursive;
+}
+
+.font-accent {
+  font-family: "Caveat", cursive;
+}
+
+/* Marquee animation (subtle Sun Bum style) */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Gentle continuous floating for marine badges & icons */
+@keyframes ocean-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1.5deg);
+  }
+}
+
+.animate-ocean-float {
+  animation: ocean-float 5s ease-in-out infinite;
+}
+
+/* Palm breeze sway for sunset footer */
+@keyframes palm-sway {
+  0%, 100% {
+    transform: rotate(-1.6deg);
+  }
+  50% {
+    transform: rotate(2.1deg);
+  }
+}
+
+.animate-palm-sway {
+  transform-origin: bottom center;
+  animation: palm-sway 6.5s ease-in-out infinite;
+}
+
+.animate-palm-sway-slow {
+  transform-origin: bottom center;
+  animation: palm-sway 8.2s ease-in-out infinite reverse;
+}
+
+/* Subtle shimmering wave fill on CTA buttons */
+.btn-wave {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-wave::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 80%
+  );
+  transform: translateX(-130%) skewX(-18deg);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+
+.btn-wave:hover::before {
+  transform: translateX(130%) skewX(-18deg);
+}
+
+.btn-wave:hover {
+  transform: translateY(-2px);
+}
+
+.btn-wave:active {
+  transform: translateY(0px) scale(0.985);
+}
+
+/* Sun Bum inspired product card hover zoom & lifestyle reveal */
+.product-card-hover .hover-lifestyle {
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 4.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card-hover:hover .hover-lifestyle {
+  opacity: 1;
+  transform: scale(1.13);
+}
+
+.product-card-hover .default-view {
+  transition: opacity 0.38s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-card-hover:hover .default-view {
+  opacity: 0.12;
+  transform: scale(0.98);
+}
+
+.product-card-hover .hover-cta-pill {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.35s ease 0.06s,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.04s;
+}
+
+.product-card-hover:hover .hover-cta-pill {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* Whale shark subtle polka dot pattern */
+.pattern-whale-dots {
+  background-image: radial-gradient(rgba(11, 61, 110, 0.08) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(78, 199, 195, 0.12) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F1E7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B7A8F;
+  border-radius: 999px;
+  border: 2px solid #F7F1E7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0B3D6E;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-ocean-float,
+  .animate-palm-sway,
+  .animate-palm-sway-slow {
+    animation: none !important;
+  }
+}
